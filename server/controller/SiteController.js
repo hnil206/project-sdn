@@ -2,7 +2,7 @@ const employeeModel = require('../models/Employee')
 
 class SiteController{
     async index(req,res){
-        res.render('/')
+        res.render('/');
     }
     login(req,res){
         const {email, password} = req.body;

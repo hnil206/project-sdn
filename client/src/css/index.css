@@ -8,4 +8,8 @@
     background-color: #dc3545 !important;
     color: white !important;
   }
-  
+  .custom-label-height label {
+    height: 80px; /* Set the desired height */
+    display: flex;
+    align-items: center;
+  }
