@@ -1,12 +1,8 @@
-const loginRouter = require('./login');
 const siteRouter = require('./site');
-const sigupRouter = require('./signup');
-
-
+const taskRouter = require('./TaskRoute');
 
 function route(app){
-    app.use('/login', loginRouter);
-    app.use('/signup', sigupRouter);
+    app.use('task', taskRouter);
     app.use('/', siteRouter);
 
 }
