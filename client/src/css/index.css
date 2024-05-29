@@ -1,0 +1,11 @@
+
+.bg-success {
+    background-color: #28a745 !important;
+    color: white !important;
+  }
+  
+  .bg-error {
+    background-color: #dc3545 !important;
+    color: white !important;
+  }
+  
