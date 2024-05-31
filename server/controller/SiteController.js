@@ -1,5 +1,5 @@
 const employeeModel = require('../models/Employee')
-
+const bcrypt = require('bcrypt');
 class SiteController{
     async index(req,res){
         res.render('/');
@@ -19,10 +19,20 @@ class SiteController{
             else{res.json("Email or Password is incorrect")}
         })
     }
-    sigup(req, res){
-        employeeModel.create(req.body)
-    .then(employees => res.json(employees))
-    .catch(err => res.json(err))
+    async signup(req, res) {
+        const { name, email, password } = req.body;
+        try {
+            const existingUser = await employeeModel.findOne({ email: email });
+            if (existingUser) {
+                res.json("Email already exists");
+            } else {
+                const hashedPassword = await bcrypt.hash(password, 10);
+                const newUser = await employeeModel.create({ name, email, password: hashedPassword });
+                res.json(newUser);
+            }
+        } catch (err) {
+            res.status(500).json({ error: 'Internal Server Error' });
+        }
     }
 
 }

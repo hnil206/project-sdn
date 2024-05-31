@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from 'axios';
 import {useNavigate} from 'react-router-dom'
@@ -36,7 +36,6 @@ function Task() {
                 <MDBInput wrapperClass="mb-4 " id="form6Example3" label="Description" value={description} onChange={(e) => setDescription(e.target.value)} required />
                 <MDBInput wrapperClass="mb-4" id="form6Example3" label="Price" value={price} onChange={(e) => setPrice(e.target.value)} required />
                 <MDBInput wrapperClass="mb-4"  id="form6Example3" label="Stock" value={stock} onChange={(e) => setStock(e.target.value)} required />
-
                 <MDBBtn className="mb-4" type="submit" block>
                     Add
                 </MDBBtn>
