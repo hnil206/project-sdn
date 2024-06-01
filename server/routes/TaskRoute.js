@@ -18,7 +18,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 
-router.post("/delete/:id", TaskController.deleteTask);
+router.put("/delete/:id", TaskController.deleteTask);
 router.put("/update/:id", upload.single('image'),TaskController.updateTask);
 router.post("/create", upload.single('image'), TaskController.createTask); // Sử dụng upload.single
 router.get('/', TaskController.getTask);

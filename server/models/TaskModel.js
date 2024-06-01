@@ -5,7 +5,8 @@ const taskSchema = new mongoose.Schema({
     description: {type: String, require: true},
     price: { type: Number, required: true },
     stock: { type: Number, required: true },
-    image: {type: String} 
+    image: {type: String},
+    isDeleted: { type: Boolean, default: false } 
 },
 {
     timestamps: true

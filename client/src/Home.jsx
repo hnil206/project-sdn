@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Nav, Container, Row, Col, Card, Button } from "react-bootstrap";
 import axios from "axios";
@@ -10,7 +10,9 @@ function Home() {
     // Lấy danh sách sản phẩm từ API
     axios.get('http://localhost:3001/task')
       .then(response => {
-        setProducts(response.data);
+        // Lọc những sản phẩm có isDeleted: false
+        const filteredProducts = response.data.filter(product => !product.isDeleted);
+        setProducts(filteredProducts);
       })
       .catch(error => {
         console.error("There was an error fetching the products!", error);

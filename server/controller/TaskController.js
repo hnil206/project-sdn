@@ -69,14 +69,17 @@ class TaskController {
     async deleteTask(req, res, next) {
         try {
             const { id } = req.params;
-            await TaskModel.findByIdAndDelete(id);
-            res.send("Deleted successfully!");
+            const updatedTask = await TaskModel.findByIdAndUpdate(
+                id,
+                { isDeleted: true },
+                { new: true }
+            );
+            res.send(updatedTask);
         } catch (err) {
-            console.log("Error in deleteTask:", err); 
-            res.send({ error: err, msg: "Something went wrong!" });
+            console.log("Error in deleteTask:", err);
+            res.status(500).send({ error: err, msg: "Something went wrong!" });
         }
     }
-
     async getTaskById(req, res, next) {
         try {
             const { id } = req.params;
