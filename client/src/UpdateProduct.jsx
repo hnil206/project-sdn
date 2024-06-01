@@ -6,13 +6,14 @@ import "./css/index.css";
 
 function UpdateProduct() {
   const { id } = useParams(); // Get the product ID from the URL
-  const navigate = useNavigate(); // Updated
+  const navigate = useNavigate();
   const [task, setTask] = useState({
     name: "",
     description: "",
     price: "",
     stock: ""
   });
+  const [image, setImage] = useState(null); // State for new image file
 
   useEffect(() => {
     // Fetch the current product data
@@ -34,14 +35,31 @@ function UpdateProduct() {
     });
   };
 
+  const handleImageChange = (e) => {
+    setImage(e.target.files[0]);
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    const formData = new FormData();
+    formData.append('name', task.name);
+    formData.append('description', task.description);
+    formData.append('price', task.price);
+    formData.append('stock', task.stock);
+    if (image) {
+      formData.append('image', image);
+    }
+
     // Send the updated product data to the server
     axios
-      .put(`http://localhost:3001/task/update/${id}`, task)
+      .put(`http://localhost:3001/task/update/${id}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      })
       .then(() => {
         alert("Update successfully!");
-        navigate("/"); // Navigate back to the product list page
+        navigate("/task"); // Navigate back to the product list page
       })
       .catch((error) => {
         console.error("There was an error updating the product!", error);
@@ -94,6 +112,16 @@ function UpdateProduct() {
             name="stock"
             value={task.stock}
             onChange={handleChange}
+          />
+        </div>
+        <div className="mb-3">
+          <label htmlFor="image" className="form-label">Image</label>
+          <input
+            type="file"
+            className="form-control"
+            id="image"
+            name="image"
+            onChange={handleImageChange}
           />
         </div>
         <button type="submit" className="btn btn-primary">Update Product</button>

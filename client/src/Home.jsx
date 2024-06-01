@@ -1,14 +1,21 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Nav, Container, Row, Col, Card, Button } from "react-bootstrap";
+import axios from "axios";
 
 function Home() {
-  const products = [
-    { id: 1, name: "Product 1", price: "$10", image: "https://via.placeholder.com/150" },
-    { id: 2, name: "Product 2", price: "$20", image: "https://via.placeholder.com/150" },
-    { id: 3, name: "Product 3", price: "$30", image: "https://via.placeholder.com/150" },
-    { id: 4, name: "Product 4", price: "$40", image: "https://via.placeholder.com/150" },
-  ];
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    // Lấy danh sách sản phẩm từ API
+    axios.get('http://localhost:3001/task')
+      .then(response => {
+        setProducts(response.data);
+      })
+      .catch(error => {
+        console.error("There was an error fetching the products!", error);
+      });
+  }, []);
 
   return (
     <div>
@@ -38,12 +45,12 @@ function Home() {
       <Container className="my-5">
         <Row>
           {products.map((product) => (
-            <Col key={product.id} sm={12} md={6} lg={3} className="mb-4">
+            <Col key={product._id} sm={12} md={6} lg={3} className="mb-4">
               <Card>
-                <Card.Img variant="top" src={product.image} />
+                <Card.Img variant="top" src={`http://localhost:3001/uploads/${product.image}`}/>
                 <Card.Body>
                   <Card.Title>{product.name}</Card.Title>
-                  <Card.Text>{product.price}</Card.Text>
+                  <Card.Text>{product.price}$</Card.Text>
                   <Button variant="primary">Add to Cart</Button>
                 </Card.Body>
               </Card>
