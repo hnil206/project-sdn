@@ -5,7 +5,8 @@ import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
 import Modal from "react-bootstrap/Modal"; // Import modal component
 import Button from "react-bootstrap/Button"; // Import button component
-import "./css/index.css";
+import "../css/index.css";
+
 import { Link } from "react-router-dom";
 
 function ListProduct() {

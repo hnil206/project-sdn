@@ -1,27 +1,28 @@
 import { useState } from 'react'
-import Signup from './Signup'
-import Login from './Login'
+import Signup from './components/Signup'
+import Login from './components/Login'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import Home from './Home';
-import Task from './Task'
-import ListProduct from './ListProduct'
-import UpdateProduct from './UpdateProduct';
+import Home from './components/Home';
+import Task from './components/Task'
+import ListProduct from './components/ListProduct'
+import UpdateProduct from './components/UpdateProduct';
+import Layout from './components/Layout';
 function App() {
 
   return (
     <BrowserRouter>
-      <Routes>
-        <Route path='/task/create' element={<Task/>}></Route>
-        <Route path='/task' element={<ListProduct/>}></Route>
-        <Route path='/login' element={<Login/>}></Route>
-        <Route path='/signup' element={<Signup/>}></Route>
-        <Route path='/' element={<Home/>}></Route>
-        <Route path='/task/update/:id' element={<UpdateProduct/>}></Route>
-
-
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route path='/' element={<Layout/>}>
+        <Route index  element={<Home/>}></Route>
+        <Route path='task/create' element={<Task/>}></Route>
+        <Route path='task' element={<ListProduct/>}></Route>
+        <Route path='login' element={<Login/>}></Route>
+        <Route path='signup' element={<Signup/>}></Route>
+        <Route path='task/update/:id' element={<UpdateProduct/>}></Route>
+      </Route>
+    </Routes>
+  </BrowserRouter>
   )
 }
 

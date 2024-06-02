@@ -21,20 +21,7 @@ function Home() {
 
   return (
     <div>
-      {/* Navbar */}
-      <Navbar bg="dark" variant="dark" expand="lg">
-        <Container>
-          <Navbar.Brand href="#home">Online Shop</Navbar.Brand>
-          <Navbar.Toggle aria-controls="basic-navbar-nav" />
-          <Navbar.Collapse id="basic-navbar-nav">
-            <Nav className="me-auto">
-              <Nav.Link href="#home">Home</Nav.Link>
-              <Nav.Link href="/task/create">Add product</Nav.Link>
-              <Nav.Link href="#contact">Contact</Nav.Link>
-            </Nav>
-          </Navbar.Collapse>
-        </Container>
-      </Navbar>
+  
 
       {/* Banner */}
       <div className="bg-light py-5 text-center">
@@ -61,16 +48,7 @@ function Home() {
         </Row>
       </Container>
 
-      {/* Footer */}
-      <footer className="bg-dark text-white text-center py-3">
-        <Container>
-          <Row>
-            <Col>
-              <p>&copy; 2024 Online Shop. All Rights Reserved.</p>
-            </Col>
-          </Row>
-        </Container>
-      </footer>
+    
     </div>
   );
 }

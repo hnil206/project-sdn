@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
-import "./css/index.css";
+import "../css/index.css";
 
 function UpdateProduct() {
   const { id } = useParams(); // Get the product ID from the URL

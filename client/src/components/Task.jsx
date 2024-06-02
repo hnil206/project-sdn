@@ -6,7 +6,8 @@ import {
   MDBInput,
   MDBBtn,
 } from "mdb-react-ui-kit";
-import './css/index.css';
+import "../css/index.css";
+
 
 function Task() {
     const [name, setName] = useState('');

@@ -3,7 +3,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Toast, ToastContainer } from "react-bootstrap";
-import './css/index.css'; // Import file CSS tùy chỉnh
+import "../css/index.css";
+
 
 function Login() {
   const [email, setEmail] = useState("");
