@@ -3,10 +3,13 @@ import { useParams, useNavigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import axios from "axios";
 import "../css/index.css";
-
+import { Toast, ToastContainer } from "react-bootstrap";
 function UpdateProduct() {
   const { id } = useParams(); // Get the product ID from the URL
   const navigate = useNavigate();
+  const [showToast, setShowToast] = useState(false);
+  const [toastMessage, setToastMessage] = useState("");
+  const [toastType, setToastType] = useState("");
   const [task, setTask] = useState({
     name: "",
     description: "",
@@ -58,12 +61,18 @@ function UpdateProduct() {
         }
       })
       .then(() => {
-        alert("Update successfully!");
-        navigate("/task"); // Navigate back to the product list page
+        setToastMessage("update successful");
+          setToastType("success");
+          setShowToast(true);
+          setTimeout(() => {
+            navigate('/task');
+          }, 3000);
       })
       .catch((error) => {
         console.error("There was an error updating the product!", error);
-        alert("Something went wrong!");
+        setToastMessage("An error occurred. Please try again.");
+        setToastType("error");
+        setShowToast(true);
       });
   };
 
@@ -126,6 +135,13 @@ function UpdateProduct() {
         </div>
         <button type="submit" className="btn btn-primary">Update Product</button>
       </form>
+
+       {/* Toast hiển thị thông báo */}
+       <ToastContainer position="top-end" className="p-3">
+        <Toast onClose={() => setShowToast(false)} show={showToast} delay={3000} autohide className={`bg-${toastType}`}>
+          <Toast.Body>{toastMessage}</Toast.Body>
+        </Toast>
+      </ToastContainer>
     </div>
   );
 }

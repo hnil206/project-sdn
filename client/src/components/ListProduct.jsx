@@ -49,6 +49,9 @@ function ListProduct() {
 
   return (
     <Container className="mt-5">
+      <Link to={`/task/create`}>
+        <Button>Add Product</Button>
+      </Link>
       <h2 className="text-center mb-4">Product List</h2>
       <Table striped bordered hover responsive>
         <thead className="table-dark">
@@ -83,6 +86,9 @@ function ListProduct() {
                   >
                     Xóa
                   </button>
+                  <Link to={`/task/${task._id}`} className="btn btn-success mx-1">
+                    Chi tiết
+                  </Link>
                 </div>
               </td>
             </tr>

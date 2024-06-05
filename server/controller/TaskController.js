@@ -36,7 +36,7 @@ class TaskController {
     async updateTask(req, res, next) {
         try {
             let taskUpdate = req.body;
-            console.log(taskUpdate);
+           
 
             // Check if a new file is uploaded
             if (req.file) {

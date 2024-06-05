@@ -8,6 +8,8 @@ import Task from './components/Task'
 import ListProduct from './components/ListProduct'
 import UpdateProduct from './components/UpdateProduct';
 import Layout from './components/Layout';
+import DetailProduct from './components/DetailProduct';
+
 function App() {
 
   return (
@@ -20,6 +22,7 @@ function App() {
         <Route path='login' element={<Login/>}></Route>
         <Route path='signup' element={<Signup/>}></Route>
         <Route path='task/update/:id' element={<UpdateProduct/>}></Route>
+        <Route path='task/:id' element={<DetailProduct/>}></Route>
       </Route>
     </Routes>
   </BrowserRouter>

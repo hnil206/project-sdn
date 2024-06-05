@@ -51,7 +51,7 @@ function Task() {
                 <MDBInput wrapperClass="mb-4 " id="form6Example3" label="Description" value={description} onChange={(e) => setDescription(e.target.value)} required />
                 <MDBInput wrapperClass="mb-4" id="form6Example3" label="Price" value={price} onChange={(e) => setPrice(e.target.value)} required />
                 <MDBInput wrapperClass="mb-4" id="form6Example3" label="Stock" value={stock} onChange={(e) => setStock(e.target.value)} required />
-                <MDBInput wrapperClass="mb-4" type="file" id="form6Example3" label="Image" onChange={handleFileChange} required />
+                <MDBInput wrapperClass="mb-4" type="file" id="form6Example3" label="Image" onChange={handleFileChange} required  accept="image/*"/>
                 <MDBBtn className="mb-4" type="submit" block>
                     Add
                 </MDBBtn>
